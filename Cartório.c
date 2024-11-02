@@ -23,7 +23,7 @@ int registro () //Função responsável por cadastrar os usuários no sistema
 	fclose(file); //fecha o arquivo
 	
 	file = fopen(arquivo, "a");
-	fprintf(file, ",");
+	fprintf(file, ","); // Adiciona uma vírgula ao final do CPF
  	fclose(file);
  	
  	printf ("Digite o nome a ser cadastrado");
@@ -55,7 +55,7 @@ int registro () //Função responsável por cadastrar os usuários no sistema
 	fprintf(file, cargo);
 	fclose(file);
 	
-	system("pause");
+	system("pause");  // Pausa para o usuário visualizar as informações
 	
 }
 	
@@ -73,7 +73,7 @@ int consulta ()
 	FILE *file;
 	file = fopen(cpf,"r");
 	
-	if(file == NULL)
+	if(file == NULL) // Verifica se o arquivo foi aberto corretamente
 	{
 		printf("Não foi possível abrir o arquivo, não localizado!.\n");
 	}
@@ -123,36 +123,41 @@ int deletar ()
        	    system("cls"); //Responsável por limpar a tela
 	   
                   	
-	                                setlocale(LC_ALL, "Portuguese");  //definindo a linguagem	                                 
+	                                setlocale(LC_ALL, "Portuguese");  //definindo a linguagem para português	                                 
                                    	printf("### Cartório da EBAC ###\n\n");
 //início do menu
                                  	printf("Escolha a opção desejada no menu: \n\n");
                                 	printf("\t1 - Registrar nomes\n");
                                  	printf("\t2 - Consultar nomes\n");
 	                                printf("\t3 - Deletar nomes\n\n"); 
+	                                printf("\t4 - Sair do sistema\n\n");
 	                                printf("Opção: ");//fim do menu
 	
                                            	scanf("%d" , &opcao); // armazenando a escolha do usuário
 	
 	
-                                          	system("cls");
+                                          	system("cls"); //Limpa a tela
                                           	
                                           	
                                           	switch(opcao)
                                           	{
                                           		case 1:
-                                          		registro (); //Chamada de funções
+                                          		registro (); //Chamada da função de resgistro
                                     	    	break;
                                     	    	case 2:
-                                    	    	consulta();
+                                    	    	consulta(); //Chamada da função de consulta
 	                                            break;
 												case 3:
-												deletar();
+												deletar(); //Chamada da função de deletar
                                         		break; 
+                                        		case 4:
+                                        		printf("Obrigada por utilizar o sistema!\n");
+                                        		return 0;
+                                        		break;
                                         		
                                         								
 												default:
-												printf("Essa opção não está disponível!\n");
+												printf("Essa opção não está disponível!\n"); //Mensagem de erro
                                         		system("pause");
 												break;	
 											  }
